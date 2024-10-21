@@ -1,18 +1,18 @@
-{
-margin=0;
-padding=0;
+* {
+margin: 0;
+padding: 0;
 }
 
-body{
-  fontfamily: monsterrat;
-  background: linier-gradient(125deg, #efd3cca, #00bfff, #34c924, #ffdc33, #ff2400)
+body {
+  font-family: montserrat;
+  background: linear-gradient(125deg, #ed3cca, #00bfff, #34c924, #ffdc33, #ff2400)
   background-size: 400% 400%;
-  animation: bganytime 15s infinite;
+  animation: bganitime 15s infinite;
 }
 .wrapper {
   display: flex;
   justify-content: center;
-  alighn-items: center;
+  align-items: center;
   color: #ffffff;
   min-height: 100vh;
   font-size: 45px;
