@@ -121,21 +121,26 @@
 
   .u-section-1 .u-layout-wrap-1 {
     width: 340px;
-    margin-top: 60px;
+    margin-top: 114px;
     margin-bottom: 60px;
   }
 
   .u-section-1 .u-layout-cell-1 {
-    min-height: 755px;
+    min-height: 608px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-top: 20px;
   }
 
   .u-section-1 .u-image-1 {
-    width: 340px;
-    height: 415px;
+    width: 302px;
+    height: 348px;
+    margin-top: 1px;
   }
 
   .u-section-1 .u-group-1 {
-    margin-top: 87px;
+    margin-top: 39px;
     min-height: 169px;
     margin-right: initial;
     margin-left: initial;
