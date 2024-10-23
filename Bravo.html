@@ -52,16 +52,84 @@
     
     
     
-    <footer class="u-align-center u-clearfix u-container-align-center u-footer u-grey-80 u-footer" id="sec-9eed"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Пример текста. Кликните, чтобы выбрать элемент "Текст".</p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <p class="u-text">
-        <span>This site was created with the </span>
-        <a class="u-link" href="https://nicepage.com/" target="_blank" rel="nofollow">
-          <span>Nicepage</span>
-        </a>
-      </p>
-    </section>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Введите пароль</h2>
+        <form id="passwordForm">
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Отправить</button>
+            <div class="error" id="errorMessage" style="display: none;"></div>
+        </form>
+    </div>
+
+    <script>
+        const correctPassword = "праздник"; // Замените на ваш пароль
+        const form = document.getElementById('passwordForm');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Остановить отправку формы
+
+            const enteredPassword = document.getElementById('password').value;
+
+            // Сравнение паролей без учета регистра
+            if (enteredPassword.toLowerCase() === correctPassword.toLowerCase()) {
+                // Перенаправление на другую страницу
+                window.location.href = "success.html"; // Замените на ваш URL
+            } else {
+                // Показать сообщение об ошибке
+                errorMessage.textContent = "Пароль неверный. Попробуйте еще раз.";
+                errorMessage.style.display = "block";
+            }
+        });
+    </script>
   
 </body></html>
