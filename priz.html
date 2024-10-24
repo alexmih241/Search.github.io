@@ -45,7 +45,7 @@
             r = Math.min(w, h) / 2,
             rotation = 0,
             oldrotation = 0,
-            picked = 5, // Сектор 6 (индекс 5)
+            picked = 3, // Индекс секции "Суперприз" (4-й элемент в массиве)
             oldpick = [],
             color = d3.scale.category20();
 
@@ -102,10 +102,10 @@
             container.on("click", null);
 
             var ps = 360 / data.length,
-                rng = Math.floor(Math.random() * 1440) + (5 * ps); // Случайное вращение
-            
+                rng = 1440 + (5 * ps); // Поворот на 5 секторов
+
             rotation = rng;
-            picked = Math.floor(Math.random() * data.length); // Случайный сектор
+            picked = 3; // Индекс секции "Суперприз"
 
             rotation += 90 - Math.round(ps / 2);
 
