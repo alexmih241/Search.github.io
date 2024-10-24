@@ -40,19 +40,18 @@
             text-align: center;
             font-size: 16px;
             width: 100%;
-        }
         #pointer {
-            position: absolute;
-            top: 140px; /* Указатель над колесом */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-bottom: 30px solid #e74c3c; /* Цвет указателя */
-            z-index: 10; /* Указатель выше колеса */
-        }
+    position: absolute;
+    top: 130px; /* Опустите указатель ниже колеса */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #e74c3c; /* Цвет указателя */
+    z-index: 10; /* Убедимся, что указатель выше колеса */
+}
         #spinButton {
             margin-top: 20px;
             padding: 10px 20px;
