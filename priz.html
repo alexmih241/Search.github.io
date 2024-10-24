@@ -15,8 +15,8 @@
             background-color: #f4f4f4;
         }
         #wheel {
-            width: 330px;  /* Увеличен радиус */
-            height: 330px; /* Увеличен радиус */
+            width: 330px;  /* Радиус колеса */
+            height: 330px; /* Радиус колеса */
             border-radius: 50%;
             position: relative;
             overflow: hidden;
@@ -43,7 +43,7 @@
         }
         #pointer {
             position: absolute;
-            top: -30px; /* Поднимаем указатель над колесом */
+            top: 150px; /* Указатель над колесом */
             left: 50%;
             transform: translateX(-50%);
             width: 0;
@@ -51,7 +51,7 @@
             border-left: 15px solid transparent;
             border-right: 15px solid transparent;
             border-bottom: 30px solid #e74c3c; /* Цвет указателя */
-            z-index: 10; /* Убедимся, что указатель выше колеса */
+            z-index: 10; /* Указатель выше колеса */
         }
         #spinButton {
             margin-top: 20px;
@@ -86,15 +86,14 @@
 
         // Индивидуальные настройки для каждой секции
         const textPositions = [
-            { top: '40%', translateY: '-25%', angle: 63 },
-            { top: '25%', translateY: '-60%', angle: -45 },
-            { top: '25%', translateY: '-60%', angle: -90 },
-            { top: '25%', translateY: '-60%', angle: -135 },
-            { top: '25%', translateY: '-60%', angle: -180 },
-            { top: '25%', translateY: '-60%', angle: -225 },
-            { top: '25%', translateY: '-60%', angle: -225 },
-            { top: '25%', translateY: '-60%', angle: -270 },
-            { top: '25%', translateY: '-60%', angle: -315 }
+            { top: '40%', translateY: '-60%', angle: 22.5 },
+            { top: '40%', translateY: '-60%', angle: 67.5 },
+            { top: '40%', translateY: '-60%', angle: 112.5 },
+            { top: '40%', translateY: '-60%', angle: 157.5 },
+            { top: '40%', translateY: '-60%', angle: 202.5 },
+            { top: '40%', translateY: '-60%', angle: 247.5 },
+            { top: '40%', translateY: '-60%', angle: 292.5 },
+            { top: '40%', translateY: '-60%', angle: 337.5 }
         ];
 
         function createWheel() {
