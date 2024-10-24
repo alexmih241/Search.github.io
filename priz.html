@@ -6,7 +6,7 @@
     <style type="text/css">
         text {
             font-family: Helvetica, Arial, sans-serif;
-            font-size: 14px; /* Увеличен размер шрифта */
+            font-size: 18px; /* Увеличен размер шрифта */
             pointer-events: none;
             font-weight: bold; /* Жирный текст */
         }
@@ -14,9 +14,9 @@
             position: absolute;
             width: 800px; /* Увеличена ширина */
             height: 800px; /* Увеличена высота */
-            top: 50%; /* Центрирование по вертикали */
+            top: 20px; /* Отступ сверху */
             left: 50%; /* Центрирование по горизонтали */
-            transform: translate(-50%, -50%); /* Центрирование */
+            transform: translate(-50%, 0); /* Центрирование по горизонтали */
         }
         #question {
             position: absolute;
@@ -84,13 +84,16 @@
             .attr("fill", function(d, i) { return color(i); })
             .attr("d", function(d) { return arc(d); });
 
-        arcs.append("text").attr("transform", function(d) {
+        arcs.append("text")
+            .attr("transform", function(d) {
                 d.innerRadius = 0;
                 d.outerRadius = r;
                 d.angle = (d.startAngle + d.endAngle) / 2;
                 return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius - 10) + ")";
             })
             .attr("text-anchor", "end")
+            .style("font-size", "18px") // Увеличен размер шрифта
+            .style("font-weight", "bold") // Жирный текст
             .text(function(d, i) { return data[i].label; });
 
         container.on("click", spin);
@@ -99,10 +102,10 @@
             container.on("click", null);
 
             var ps = 360 / data.length,
-                rng = 1440 + (5 * ps); // Поворот на 5 секторов (360° / 8 секторов * 5)
+                rng = Math.floor(Math.random() * 1440) + (5 * ps); // Случайное вращение
             
             rotation = rng;
-            picked = 5; // Сектор 6 (индекс 5)
+            picked = Math.floor(Math.random() * data.length); // Случайный сектор
 
             rotation += 90 - Math.round(ps / 2);
 
