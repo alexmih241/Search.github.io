@@ -1,4 +1,130 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="ru"><head>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
+    <title>Колесо Фортуны</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        #wheel {
+            width: 400px;  /* Увеличен радиус */
+            height: 400px; /* Увеличен радиус */
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            transform: rotate(0deg);
+            transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+        .slice {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            clip-path: polygon(100% 100%, 100% 0%, 0% 0%);
+            transform-origin: 100% 100%;
+        }
+        .slice span {
+            position: absolute;
+            left: 50%;
+            top: 40%; /* Положение по вертикали */
+            transform: translate(-50%, -60%) rotate(0deg);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+            width: 100%;
+        }
+        #pointer {
+            position: absolute;
+            top: -30px; /* Поднимаем указатель над колесом */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid #e74c3c; /* Цвет указателя */
+            z-index: 10; /* Убедимся, что указатель выше колеса */
+        }
+        #spinButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="pointer"></div> <!-- Указатель -->
+    <div id="wheel"></div>
+    <button id="spinButton">Крутить колесо</button>
+    <script>
+        const results = [
+            'меховые тапочки',
+            'Секция 2',
+            'Секция 3',
+            'Секция 4',
+            'Секция 5',
+            'Секция 6',
+            'Секция 7',
+            'Секция 8' // Это всегда будет выигрышной секцией
+        ];
+
+        const colors = ['#f39c12', '#3498db']; // Два цвета для секций
+        const wheel = document.getElementById('wheel');
+        const spinButton = document.getElementById('spinButton');
+
+        // Индивидуальные настройки для каждой секции
+        const textPositions = [
+            { top: '40%', translateY: '-25%', angle: 63 },
+            { top: '25%', translateY: '-60%', angle: -45 },
+            { top: '25%', translateY: '-60%', angle: -90 },
+            { top: '25%', translateY: '-60%', angle: -135 },
+            { top: '25%', translateY: '-60%', angle: -180 },
+            { top: '25%', translateY: '-60%', angle: -225 },
+            { top: '25%', translateY: '-60%', angle: -225 },
+            { top: '25%', translateY: '-60%', angle: -270 },
+            { top: '25%', translateY: '-60%', angle: -315 }
+        ];
+
+        function createWheel() {
+            const sliceAngle = 360 / results.length; // 45 градусов на каждую секцию
+            for (let i = 0; i < results.length; i++) {
+                const slice = document.createElement('div');
+                slice.className = 'slice';
+                slice.style.transform = `rotate(${i * sliceAngle}deg)`;
+                slice.style.backgroundColor = colors[i % 2]; // Чередование цветов
+
+                // Добавляем текст в каждую секцию
+                const text = document.createElement('span');
+                text.innerText = results[i];
+                text.style.top = textPositions[i].top; // Положение по вертикали
+                text.style.transform = `translate(-50%, ${textPositions[i].translateY}) rotate(${textPositions[i].angle}deg)`; // Поворот текста
+                slice.appendChild(text);
+
+                wheel.appendChild(slice);
+            }
+        }
+
+        spinButton.addEventListener('click', () => {
+            const fixedDegree = 360 * 3 + 360; // 3 полных оборота + 360 градусов для секции 8
+            wheel.style.transform = `rotate(${fixedDegree}deg)`;
+            setTimeout(() => {
+                alert(`Результат: ${results[7]}`); // Всегда показываем секцию 8
+            }, 4000); // совпадает с продолжительностью вращения
+        });
+
+        createWheel();
+    </script>
+</body>
+</html>
