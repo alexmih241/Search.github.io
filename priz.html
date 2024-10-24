@@ -8,19 +8,21 @@
             font-family: Helvetica, Arial, sans-serif;
             font-size: 14px; /* Увеличен размер шрифта */
             pointer-events: none;
+            font-weight: bold; /* Жирный текст */
         }
         #chart {
             position: absolute;
-            width: 600px; /* Увеличена ширина */
-            height: 600px; /* Увеличена высота */
-            top: 0;
-            left: 0;
+            width: 800px; /* Увеличена ширина */
+            height: 800px; /* Увеличена высота */
+            top: 50%; /* Центрирование по вертикали */
+            left: 50%; /* Центрирование по горизонтали */
+            transform: translate(-50%, -50%); /* Центрирование */
         }
         #question {
             position: absolute;
-            width: 600px; /* Ширина равна ширине колеса */
+            width: 800px; /* Ширина равна ширине колеса */
             height: 100px; /* Высота для текста */
-            top: 550px; /* Позиция ниже колеса */
+            top: 850px; /* Позиция ниже колеса */
             left: 0;
             text-align: center; /* Центрирование текста */
         }
@@ -38,8 +40,8 @@
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
         var padding = {top: 20, right: 40, bottom: 0, left: 0},
-            w = 600 - padding.left - padding.right,
-            h = 600 - padding.top - padding.bottom,
+            w = 800 - padding.left - padding.right,
+            h = 800 - padding.top - padding.bottom,
             r = Math.min(w, h) / 2,
             rotation = 0,
             oldrotation = 0,
@@ -129,7 +131,7 @@
         container.append("circle")
             .attr("cx", 0)
             .attr("cy", 0)
-            .attr("r", 80) // Увеличен радиус круга
+            .attr("r", 100) // Увеличен радиус круга
             .style({"fill": "white", "cursor": "pointer"});
 
         container.append("text")
