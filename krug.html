@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Колесо удачи</title>
+  <style>
+    /* делаем везде так, чтобы свойства width и height задавали не размеры контента, а размеры блока */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* общие настройки страницы */
+    body {
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    /* общий блок для всех элементов */
+    .deal-wheel {
+      --size: clamp(250px, 80vmin, 700px);
+      --lg-hs: 0 3%;
+      --lg-stop: 50%;
+      --lg: linear-gradient(
+        hsl(var(--lg-hs) 0%) 0 var(--lg-stop),
+        hsl(var(--lg-hs) 20%) var(--lg-stop) 100%
+      );
+      position: relative;
+      display: grid;
+      grid-gap: calc(var(--size) / 20);
+      align-items: center;
+      grid-template-areas:
+        "spinner"
+        "trigger";
+      font-size: calc(var(--size) / 21);
+    }
+
+    .deal-wheel > * {
+      grid-area: spinner;
+    }
+
+    .deal-wheel .btn-spin {
+      grid-area: trigger;
+      justify-self: center;
+    }
+
+    /* сектор колеса */
+    .spinner {
+      position: relative;
+      display: grid;
+      align-items: center;
+      grid-template-areas: "spinner";
+      width: var(--size);
+      height: var(--size);
+      transform: rotate(calc(var(--rotate, 25) * 1deg));
+      border-radius: 50%;
+    }
+
+    .spinner * {
+      grid-area: spinner;
+    }
+
+    /* текст на секторах */
+    .prize {
+      display: flex;
+      align-items: center;
+      padding: 0 calc(var(--size) / 6) 0 calc(var(--size) / 20);
+      width: 50%;
+      height: 50%;
+      transform-origin: center right;
+      transform: rotate(var(--rotate));
+      user-select: none;
+    }
+
+    /* язычок */
+    .ticker {
+      position: relative;
+      left: calc(var(--size) / -15);
+      width: calc(var(--size) / 10);
+      height: calc(var(--size) / 20);
+      background: var(--lg);
+      z-index: 1;
+      clip-path: polygon(20% 0, 100% 50%, 20% 100%, 0% 50%);
+      transform-origin: center left;
+    }
+
+    /* кнопка запуска колеса */
+    .btn-spin {
+      color: white;
+      background: black;
+      border: none;
+      font-size: inherit;
+      padding: 0.9rem 2rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .btn-spin:disabled {
+      cursor: progress;
+      opacity: 0.25;
+    }
+
+    /* анимация вращения */
+    .is-spinning .spinner {
+      transition: transform 8s cubic-bezier(0.1, -0.01, 0, 1);
+    }
+
+    /* анимация движения язычка */
+    .is-spinning .ticker {
+      animation: tick 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes tick {
+      40% {
+        transform: rotate(-12deg);
+      }
+    }
+
+    /* анимируем выпавший сектор */
+    .prize.selected .text {
+      color: white;
+      animation: selected 800ms ease;
+    }
+
+    @keyframes selected {
+      25% {
+        transform: scale(1.25);
+        text-shadow: 1vmin 1vmin 0 hsla(0 0% 0% / 0.1);
+      }
+      40% {
+        transform: scale(0.92);
+        text-shadow: 0 0 0 hsla(0 0% 0% / 0.2);
+      }
+      60% {
+        transform: scale(1.02);
+        text-shadow: 0.5vmin 0.5vmin 0 hsla(0 0% 0% / 0.1);
+      }
+      75% {
+        transform: scale(0.98);
+      }
+      85% {
+        transform: scale(1);
+      }
+    }
+
+    /* Стили для модального окна */
+    .modal {
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="deal-wheel">
+    <ul class="spinner"></ul>
+    <div class="ticker"></div>
+    <button class="btn-spin">Испытай удачу</button>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <img id="modalImage" src="" alt=" " style="max-width: 100%; height: auto;">
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <script>
+    const prizes = [
+      { text: "Шоколадка Алёнка", color: "hsl(197 30% 43%)", image: "link_to_image_1.jpg", description: "Вкусная шоколадка." },
+      { text: "Меховые тапочки", color: "hsl(173 58% 39%)", image: "link_to_image_2.jpg", description: "Уютные тапочки для дома." },
+      { text: "Обувная ложка", color: "hsl(43 74% 66%)", image: "link_to_image_3.jpg", description: "Удобная ложка для обуви." },
+      { text: "Пемза для пяток", color: "hsl(27 87% 67%)", image: "link_to_image_4.jpg", description: "Пемза для ухода за кожей." },
+      { text: "СУПЕРПРИЗ!!!", color: "hsl(12 76% 61%)", image: "link_to_image_5.jpg", description: "Заберите ваш выйгрыш" },
+      { text: "Чесалка для спины", color: "hsl(350 60% 52%)", image: "link_to_image_6.jpg", description: "Чесалка для спины." },
+      { text: "Носки с оленями", color: "hsl(91 43% 54%)", image: "link_to_image_7.jpg", description: "Смешные носки." },
+      { text: "Футболка с Ранетками", color: "hsl(140 36% 74%)", image: "link_to_image_8.jpg", description: "Стильная футболка." }
+    ];
+
+    const wheel = document.querySelector(".deal-wheel");
+    const spinner = wheel.querySelector(".spinner");
+    const trigger = wheel.querySelector(".btn-spin");
+    const ticker = wheel.querySelector(".ticker");
+
+    const prizeSlice = 360 / prizes.length;
+    const prizeOffset = Math.floor(180 / prizes.length);
+    const spinClass = "is-spinning";
+    const selectedClass = "selected";
+    const spinnerStyles = window.getComputedStyle(spinner);
+
+    let tickerAnim;
+    let rotation = 0;
+    let currentSlice = 0;
+    let prizeNodes;
+
+    const superPrizeIndex = prizes.findIndex(prize => prize.text === "СУПЕРПРИЗ!!!");
+
+    const createPrizeNodes = () => {
+      prizes.forEach(({ text, color }, i) => {
+        const rotation = ((prizeSlice * i) * -1) - prizeOffset;
+        spinner.insertAdjacentHTML(
+          "beforeend",
+          `<li class="prize" style="--rotate: ${rotation}deg">
+            <span class="text">${text}</span>
+          </li>`
+        );
+      });
+    };
+
+    const createConicGradient = () => {
+      spinner.setAttribute(
+        "style",
+        `background: conic-gradient(
+          from -90deg,
+          ${prizes.map(({ color }, i) => `${color} 0 ${(100 / prizes.length) * (prizes.length - i)}%`).reverse()}
+        );`
+      );
+    };
+
+    const setupWheel = () => {
+      createConicGradient();
+      createPrizeNodes();
+      prizeNodes = wheel.querySelectorAll(".prize");
+    };
+
+    const spinertia = (min, max) => {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+    const runTickerAnimation = () => {
+      const values = spinnerStyles.transform.split("(")[1].split(")")[0].split(",");
+      const a = values[0];
+      const b = values[1];
+      let rad = Math.atan2(b, a);
+
+      if (rad < 0) rad += (2 * Math.PI);
+
+      const angle = Math.round(rad * (180 / Math.PI));
+      const slice = Math.floor(angle / prizeSlice);
+
+      if (currentSlice !== slice) {
+        ticker.style.animation = "none";
+        setTimeout(() => ticker.style.animation = null, 10);
+        currentSlice = slice;
+      }
+      tickerAnim = requestAnimationFrame(runTickerAnimation);
+    };
+
+    const selectPrize = () => {
+      prizeNodes[superPrizeIndex].classList.add(selectedClass);
+      const selectedPrize = prizes[superPrizeIndex];
+      document.getElementById("modalTitle").textContent = `Вы выиграли: ${selectedPrize.text}`;
+      document.getElementById("modalImage").src = selectedPrize.image;
+      document.getElementById("modalDescription").textContent = selectedPrize.description;
+
+      // Показать модальное окно
+      document.getElementById("modal").style.display = "block";
+    };
+
+    trigger.addEventListener("click", () => {
+      trigger.disabled = true;
+      rotation = superPrizeIndex * prizeSlice + 360 * Math.ceil(Math.random() * 10);
+      prizeNodes.forEach(prize => prize.classList.remove(selectedClass));
+      wheel.classList.add(spinClass);
+      spinner.style.setProperty("--rotate", rotation);
+      ticker.style.animation = "none";
+      runTickerAnimation();
+    });
+
+    spinner.addEventListener("transitionend", () => {
+      cancelAnimationFrame(tickerAnim);
+      rotation %= 360;
+      selectPrize();
+      wheel.classList.remove(spinClass);
+      spinner.style.setProperty("--rotate", rotation);
+      trigger.disabled = false;
+    });
+
+    // Закрытие модального окна
+    document.getElementById("closeModal").addEventListener("click", () => {
+      document.getElementById("modal").style.display = "none";
+    });
+
+    // Закрытие модального окна при клике вне его
+    window.addEventListener("click", (event) => {
+      const modal = document.getElementById("modal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    setupWheel();
+  </script>
+</body>
+</html>
