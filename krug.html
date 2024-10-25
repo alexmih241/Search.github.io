@@ -65,12 +65,18 @@
     .prize {
       display: flex;
       align-items: center;
-      padding: 0 calc(var(--size) / 6) 0 calc(var(--size) / 20);
+      padding: 0 calc(var(--size) / 6) 0 calc(var(--size) / 30);
       width: 50%;
       height: 50%;
       transform-origin: center right;
       transform: rotate(var(--rotate));
       user-select: none;
+    }
+
+    .prize .text {
+    font-size: calc(var(--size) / 30); /* Пропорционально размеру колеса */
+      text-align: center; /* Центрирование текста */
+      font-weight: bold; /* делает текст жирным */
     }
 
     /* язычок */
