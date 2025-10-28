@@ -1,56 +1,434 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Первый канал</title>
-    <link rel="stylesheet" href="styles1tv.css">
+    <meta charset="utf-8"/>
+    <title>Первый канал: Новости. Видео. Телепрограмма. Прямой эфир</title>
+    <meta name="description"
+          content="Новости, познавательные передачи и развлекательные шоу, фильмы и сериалы – все это вы можете смотреть на сайте Первого канала."/>
+    <meta property="og:title" content="Первый канал онлайн"/>
+    <meta name="og:description"
+          content="Новости, познавательные передачи и развлекательные шоу, фильмы и сериалы – все это вы можете смотреть на сайте Первого канала."/>
+    <meta property="og:url" content="https://www.1tv.ru/?%2F="/>
+    <meta property="og:locale" content="ru_RU"/>
+    <meta property="og:site_name" content="1tv.ru"/>
+    <meta property="og:image" content="https://www.1tv.ru/resources/images/social-stub-image.jpg"/>
+    <meta property="og:type" content="website"/>
+    <meta name="keywords" content="первый канал, новости, шоу, сериалы, видео"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@channelone_rus"/>
+    <meta name="twitter:creator" content="@channelone_rus"/>
+    <meta name="twitter:image" content="https://www.1tv.ru/resources/images/social-stub-image.jpg"/>
+    <meta name="twitter:description"
+          content="Новости, познавательные передачи и развлекательные шоу, фильмы и сериалы – все это вы можете смотреть на сайте Первого канала."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="next-head-count" content="17"/>
+    
+    <!-- Фавиконы -->
+    <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/favicons/16x16.png" sizes="16x16" type="image/png"/>
+    <link rel="icon" href="/favicons/32x32.png" sizes="32x32" type="image/png"/>
+    <link rel="icon" href="/favicons/96x96.png" sizes="96x96" type="image/png"/>
+    <link rel="icon" href="/favicons/192x192.png" sizes="192x192" type="image/png"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-57x57.png" sizes="57x57"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-60x60.png" sizes="60x60"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-72x72.png" sizes="72x72"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-76x76.png" sizes="76x76"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-114x114.png" sizes="114x114"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-120x120.png" sizes="120x120"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-144x144.png" sizes="144x144"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-152x152.png" sizes="152x152"/>
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180"/>
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#0757a8"/>
+    <meta name="msapplication-TileColor" content="#da532c"/>
+    <meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png"/>
+    <meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png"/>
+    <meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png"/>
+    <meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x310.png"/>
+    <meta name="msapplication-square310x310logo" content="/favicons/mstile-310x150.png"/>
+    <meta name="theme-color" content="#ffffff"/>
+    <link rel="manifest" href="/favicons/manifest.json"/>
+    
+    <!-- Скрипты и стили -->
+    <script>window.yaContextCb = window.yaContextCb || [];</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
+    <script>
+        !function (e, t, n, a, c) {
+            e.ym = e.ym || function () { (e.ym.a = e.ym.a || []).push(arguments) }, e.ym.l = +new Date,
+                a = t.createElement(n),
+                c = t.getElementsByTagName(n)[0],
+                a.async = 1,
+                a.src = "https://mc.yandex.ru/metrika/tag.js",
+                c.parentNode.insertBefore(a, c)
+        }(window, document, "script"),
+            window.ym = ym,
+            ym(3913696, "init", {id: 3913696, defer: true, clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true}),
+            ym(95575819, "init", {id: 95575819, defer: true, clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true});
+    </script>
+    <meta name="yandex-verification" content="5a19a8b684384477"/>
+    <meta name="google-site-verification" content="bdqON8tEEVtdbYOQrtK7JrO1tMkPyIn_nHDL8MQRi8s"/>
+    <meta name="smartbanner:enabled-platforms" content="none"/>
+    <meta name="csrf-param" content="authenticity_token"/>
+    <meta name="csrf-token"
+          content="IrVWJDu+gS18H/fDL9XYxyERYiIsTFsVn4i6WSN8qg+Ai5HY4maNutvTolqTjZ/OjB9dElQS5pKu6P+fFtZUdQ=="/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="https://cdn.direct.i-dgtl.ru/VerifyWidget.css"/>
+    <link rel="preconnect" href="/" crossorigin="anonymous" data-next-font=""/>
+    <link rel="preload" href="https://static.1tv.ru/_next/static/css/d13f43e800ef4a04.css" as="style"/>
+    <link rel="stylesheet" href="https://static.1tv.ru/_next/static/css/d13f43e800ef4a04.css" data-n-g=""/>
+    <link rel="preload" href="https://static.1tv.ru/_next/static/css/4eb7c651f10cd7bc.css" as="style"/>
+    <link rel="stylesheet" href="https://static.1tv.ru/_next/static/css/4eb7c651f10cd7bc.css" data-n-p=""/>
+    <link rel="preload" href="https://static.1tv.ru/_next/static/css/aa196dcdff656c3f.css" as="style"/>
+    <link rel="stylesheet" href="https://static.1tv.ru/_next/static/css/aa196dcdff656c3f.css" data-n-p=""/>
+    <noscript data-n-css=""></noscript>
+    <script defer nomodule src="https://static.1tv.ru/_next/static/chunks/polyfills-78c92fac7aa8fdd8.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/webpack-dcf4136cb4ed4a3e.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/framework-9620da855a94eb57.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/main-32ee0fc7b6f49209.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/pages/_app-280bfc5e8604dc1b.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/2852872c-80ad56f4ca062bde.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/499-5b82dd289560ca77.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/658-baf5eedf970713d3.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/715-02980e2454d2e6fc.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/458-d00d7cfd9fbc61ac.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/694-c7b9e98b45c2c6fa.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/chunks/pages/index-ebce650789d1c2ea.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/VTz4Ib3-eMJuL3bVbU162/_buildManifest.js"></script>
+    <script defer src="https://static.1tv.ru/_next/static/VTz4Ib3-eMJuL3bVbU162/_ssgManifest.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/live">Прямой эфир</a></li>
-                <li><a href="/news">Новости</a></li>
-                <li><a href="/shows">Шоу</a></li>
-                <li><a href="/podcasts">Подкасты</a></li>
-                <li><a href="/movies">Фильмы и сериалы</a></li>
-                <li><a href="/sport">Спорт</a></li>
-                <li><a href="/schedule">Телепрограмма</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <section class="slider">
-            <div class="slides">
-                <div class="slide empty"></div>
-                <div class="slide empty"></div>
-                <div class="slide empty"></div>
+<script src="https://static.1tv.ru/resources/javascript/libs/browserUpdater.js" charset="utf-8"></script>
+<script>
+    var yaBrowserUpdater = new ya.browserUpdater.init({
+        lang: "ru",
+        browsers: {ie: "103"},
+        theme: "red"
+    });
+</script>
+<div id="__next">
+    <div class="" data-theme="">
+        <header data-fill-gip-scroll-lock="true" class="Header_header__6Olmd">
+            <div class="Fade_fadeWrapper__kXJ9h">
+                <div class="Fade_fade__5YOBo"></div>
             </div>
-            <div class="arrows">
-                <button class="prev"><</button>
-                <button class="next">></button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="Header_mainHeader__fjTVV">
+                            <div class="Header_leftBlock__sl1Dy">
+                                <a class="Header_logo__F3FRw" href="/">
+                                    <svg width="28" height="38" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="..." fill="#fff"></path>
+                                    </svg>
+                                </a>
+                                <a tabindex="0" class="MenuButton_menuButton__WzLYa">
+                                    <div class="MenuButton_burger__z06ck"></div>
+                                    <div class="MenuButton_pageTitle__6iX29">Главная</div>
+                                    <div class="MenuButton_activeSubText__8YunX">Смотрите на Первом</div>
+                                    <span style="right:15px" class="dropdown-arrow DropdownArrow_DropdownArrow__L4u1N DropdownArrow_hideOnMobile__nCaqX"></span>
+                                </a>
+                            </div>
+                            <div class="Header_rightBlock__qoTbd">
+                                <div class="Header_geoAndSearchBlock__RSssC">
+                                    <div class="GeoButton_geoIconWrapper__0zzvN">
+                                        <div class="CircleIcon_circleIcon__KM_cC GeoButton_geoIcon__tP_Xs">
+                                            <svg width="15" height="22" viewBox="0 0 15 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                            </svg>
+                                        </div>
+                                        <span style="right:9px" class="dropdown-arrow DropdownArrow_DropdownArrow__L4u1N"></span>
+                                    </div>
+                                    <div>
+                                        <div class="CircleIcon_circleIcon__KM_cC">
+                                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="..." fill="#fff"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="SubHeader_subHeader__wXpeX" data-selector="sub-header">
+                            <div class="SubHeader_links__KpLIq">
+                                <a class="MenuItem_menuItem__vWefW MenuItem_notReady__F5QgS MenuItem_menuItemLive__Cwitj" href="/live">Эфир</a>
+                                <a class="MenuItem_menuItem__vWefW MenuItem_notReady__F5QgS" href="/news">Новости</a>
+                                <a class="MenuItem_menuItem__vWefW MenuItem_notReady__F5QgS" href="/shows">Шоу</a>
+                                <a class="MenuItem_menuItem__vWefW MenuItem_notReady__F5QgS" href="/podcasts">Подкасты</a>
+                                <a class="MenuItem_menuItem__vWefW MenuItem_notReady__F5QgS" href="/movies">Фильмы и сериалы</a>
+                                <a class="MenuItem_menuItem__vWefW MenuItem_notReady__F5QgS" href="/sport">Спорт</a>
+                                <a class="MenuItem_menuItem__vWefW MenuItem_notReady__F5QgS" href="/schedule/week">Телепрограмма</a>
+                            </div>
+                            <div class="CloseButton_closeButton__b2H9c SubHeader_closeButton__BAiz9 CloseButton_hideOnMobile__jUxii"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </header>
         
-        <section class="content">
-            <h2>Выберите телепередачу:</h2>
-            <div class="programs">
-                <div class="item empty"></div>
-                <div class="item empty"></div>
-                <div class="item empty"></div>
+        <!-- Основной контент страницы -->
+        <main class="CommonLayout_main__BAE3C">
+            <!-- Раздел с заголовком сайта и основными разделами -->
+            <div class="FullHeightWrapper_main__OW09B FullHeightWrapper_firstScreen__5WuHQ">
+                <div class="VideoBrandingBlock_newsWrapper__t2Y5i">
+                    <div class="container NewsColumn_heightControl__A06EV">
+                        <div class="row NewsColumn_heightControl__A06EV">
+                            <div class="col-sm-offset-8 col-md-offset-10 col-sm-4 col-md-2 NewsColumn_heightControl__A06EV">
+                                <div class="NewsColumn_main__ygVQY">
+                                    <div class="NewsColumn_mainInnerWrapper__rZzDc">
+                                        <a href="/news" class="NewsColumn_header__OQ7DA">
+                                            <div class="NewsColumn_headerLogo___8iUu">
+                                                <svg width="28" height="38" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="..." fill="#fff"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="NewsColumn_headerText__W4BuB">
+                                                <span class="NewsColumn_headerBoldText__GyGsR">news</span>.1tv.ru
+                                            </div>
+                                        </a>
+                                        <div class="NewsColumn_newsBlock__bvvj_">
+                                            <a href="" class="NewsColumn_newsItem__UySOM NewsColumn_empty__q00Dx">
+                                                <div class="NewsColumn_timeContainer__DBIYt">
+                                                    <div class="NewsColumn_time__FUW6x"></div>
+                                                </div>
+                                                <div class="NewsColumn_newsItemText__OEWWy"></div>
+                                            </a>
+                                            <!-- Другие элементы блока новостей -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+                
+                <!-- Основная секция с плеером эфира -->
+                <div class="VideoBranding_main__UTGon">
+                    <div class="VideoBranding_innerWrapper__ztyKd"></div>
+                </div>
+                <div class="VideoBrandingBlock_fullWrapper__7rPEA">
+                    <div class="VideoBrandingBlock_halfWrapper__62Pj3">
+                        <div class="container LivePlayerMainBlock_wrapper___DR_K">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-8 col-lg-10">
+                                    <div class="Broadcasts_broadcasts__u17zR"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-8 col-md-5 col-lg-5 LivePlayerMainBlock_player__LgE_f"></div>
+                                <div class="col-xs-12 col-sm-8 col-md-5 col-lg-4 LivePlayerMainBlock_schedule__qc2LY"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-8 col-md-5 col-lg-5 LivePlayerMainBlock_link__EI_cd">
+                                    <a class="CustomLink_main__evWy_" href="/channels">Смотреть другие телеканалы</a>
+                                </div>
+                                <div class="col-xs-12 col-sm-8 col-md-5 col-lg-4 LivePlayerMainBlock_link__EI_cd">
+                                    <a class="CustomLink_main__evWy_" href="/schedule">Телепрограмма</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Блок анонсов предстоящих передач -->
+                <div class="Block_main__QrqOM Block_borderTop__Vtsql Block_paddingTop__BLjPG Block_paddingBottom___T7it">
+                    <div class="swiper-container Slider_swiper__bbQ8b Slider_centeredByVertical__WwJ13">
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-wrapper">
+                            <!-- Здесь располагаются слайды анонсов -->
+                        </div>
+                        <div class="swiper-slide-arrow-container Slider_arrowContainer__1JgY9">
+                            <div class="container">
+                                <div class="leftArrow Slider_leftArrow__leNbR">
+                                    <a class="CircleButton_button__0__k3 CircleButton_blue__kYwNX ">
+                                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="rightArrow Slider_rightArrow__5Nl70">
+                                    <a class="CircleButton_button__0__k3 CircleButton_blue__kYwNX CircleButtonArrow_right__mQrV5">
+                                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Секция телепередач и фильмов -->
+                <div class="Block_main__QrqOM Block_borderTop__Vtsql">
+                    <div class="FullHeightWrapper_main__OW09B">
+                        <div class="VideoBranding_main__UTGon">
+                            <div class="VideoBranding_innerWrapper__ztyKd"></div>
+                        </div>
+                        <div class="VideoBrandingBlock_fullWrapper__7rPEA">
+                            <div class="VideoBrandingBlock_halfWrapper__62Pj3">
+                                <div class="container">
+                                    <h2>Телепроекты Первого канала</h2>
+                                </div>
+                                <div class="swiper-container Slider_swiper__bbQ8b Slider_centeredByVertical__WwJ13">
+                                    <div class="swiper-pagination"></div>
+                                    <div class="swiper-wrapper">
+                                        <!-- Список элементов телепроектов -->
+                                    </div>
+                                    <div class="swiper-slide-arrow-container Slider_arrowContainer__1JgY9">
+                                        <div class="container">
+                                            <div class="leftArrow Slider_leftArrow__leNbR">
+                                                <a class="CircleButton_button__0__k3 CircleButton_blue__kYwNX ">
+                                                    <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="rightArrow Slider_rightArrow__5Nl70">
+                                                <a class="CircleButton_button__0__k3 CircleButton_blue__kYwNX CircleButtonArrow_right__mQrV5">
+                                                    <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Спецпроекты -->
+                <div class="Block_main__QrqOM Block_borderTop__Vtsql">
+                    <div class="FullHeightWrapper_main__OW09B">
+                        <div class="VideoBranding_main__UTGon">
+                            <div class="VideoBranding_innerWrapper__ztyKd"></div>
+                        </div>
+                        <div class="VideoBrandingBlock_fullWrapper__7rPEA">
+                            <div class="VideoBrandingBlock_halfWrapper__62Pj3">
+                                <div class="container">
+                                    <h2><a href="/projects">Спецпроекты первого канала</a></h2>
+                                </div>
+                                <div class="swiper-container Slider_swiper__bbQ8b Slider_centeredByVertical__WwJ13">
+                                    <div class="swiper-pagination"></div>
+                                    <div class="swiper-wrapper">
+                                        <!-- Список спецпроектов -->
+                                    </div>
+                                    <div class="swiper-slide-arrow-container Slider_arrowContainer__1JgY9">
+                                        <div class="container">
+                                            <div class="leftArrow Slider_leftArrow__leNbR">
+                                                <a class="CircleButton_button__0__k3 CircleButton_blue__kYwNX ">
+                                                    <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="rightArrow Slider_rightArrow__5Nl70">
+                                                <a class="CircleButton_button__0__k3 CircleButton_blue__kYwNX CircleButtonArrow_right__mQrV5">
+                                                    <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Подвал сайта -->
+                <div class="Footer_wrapper__6jKYn Footer_opened__ZauVv">
+                    <div class="Footer_toggle__4VIaO">
+                        <div class="Footer_toggleInner__8j2p_">
+                            <button type="submit" href="" class="button CircleButton_button__E1tT0 CircleButton_grey__iENxr CircleButton_large__NSg51 Footer_toggleButton___P1v7">
+                                <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <a class="Footer_toggleHint__09xBH">Свернуть</a>
+                    </div>
+                    <footer class="Footer_footer__KZkA0">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-lg-8">
+                                    <div class="row Footer_menu__DeeMy">
+                                        <div class="col-md-12">
+                                            <div class="Footer_columns__uCGr0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4">
+                                    <div class="row Footer_external__CRV0w">
+                                        <div class="col-xs-6 col-sm-3 col-md-6">
+                                            <a rel="noopener noreferrer" target="_blank" href="https://kino.1tv.ru/">
+                                                <span class="Footer_kino1tv__SUGqf">
+                                                    <svg width="115" height="45" viewBox="0 0 115 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="..." fill="#fff"></path>
+                                                    </svg>
+                                                </span>
+                                                Онлайн-кинотеатр
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col-md-6">
+                                            <a rel="noopener noreferrer" target="_blank" href="https://www.1tv.com/">
+                                                <span>
+                                                    <svg width="49" height="30" viewBox="0 0 49 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="..." fill="#fff"></path>
+                                                    </svg>
+                                                </span>
+                                                Вещание за рубежом
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 Footer_text__RWOIJ">
+                                    <p>Первый канал — признанный лидер...</p>
+                                    <p>Оперативная, точная информация, масштабное кинопроизводство и оригинальные программы делают Первый эталоном телевизионного качества во всем мире...</p>
+                                    <p>Миссия Первого канала — всегда быть Первым и дарить миллионам людей во всем мире первоклассный российский телепродукт...</p>
+                                    <p>Трансляция общероссийских обязательных общедоступных телеканалов и телеканалов, получивших право на осуществление эфирного цифрового наземного вещания с использованием позиций в мультиплексах на всей территории Российской Федерации осуществляется в непрерывном режиме, круглосуточно, без взимания платы на странице <a href="/channels">Телеканалы</a>.</p>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row Footer_bottom__Ql_lu">
+                                <div class="col-xs-12 col-md-9 Footer_copyright__oIl2g">
+                                    © 1996 — 2025, Первый канал. Все права защищены. <a href="/about/user-agreement">Пользовательское соглашение</a>
+                                </div>
+                                <div class="col-xs-12 col-md-3 Footer_social__yLLpn">
+                                    <div class="SocialIcons_wrapper__2lgYR">
+                                        <a rel="noreferrer" target="_blank" class="button CircleButton_button__E1tT0 CircleButton_transparent__K39M4 CircleButton_large__NSg51" href="https://vk.ru/1tv">
+                                            <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="..." fill="#fff"></path>
+                                            </svg>
+                                        </a>
+                                        <!-- Остальные иконки социальных сетей -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
             </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div>© 2025 Первый канал</div>
-        <div>
-            <a href="https://vk.com/1tv">VK</a>
-            <a href="https://ok.ru/1tv">OK</a>
-            <a href="https://t.me/ChannelOne_official">Telegram</a>
-        </div>
-    </footer>
+        </main>
+        <div id="modal-root"></div>
+    </div>
+</div>
+<script id="__NEXT_DATA__" type="application/json">
+{
+    "props": {...},
+    "page": "/",
+    "query": {"/": ""},
+    "buildId": "VTz4Ib3-eMJuL3bVbU162",
+    "assetPrefix": "https://static.1tv.ru",
+    "runtimeConfig": {...},
+    "isFallback": false,
+    "isExperimentalCompile": false,
+    "gssp": true,
+    "appGip": true,
+    "scriptLoader": []
+}
+</script>
 </body>
 </html>
